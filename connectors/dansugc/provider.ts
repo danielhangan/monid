@@ -5,8 +5,7 @@ import { defineProvider, presets } from "@shared/core";
  * short vertical videos filmed by real creators (never AI), licensed per
  * clip for ads and organic posts. This port carries the B-roll surface
  * only: search (keyword or natural-language), the filter vocabulary, one
- * clip's details, licensing clips, and re-listing what the account has
- * licensed. Five synchronous endpoints against `https://dansugc.com/api/v1`,
+ * clip's details, and licensing clips. Four synchronous endpoints against `https://dansugc.com/api/v1`,
  * auth `Authorization: Bearer dsk_…` (the REST API needs a Scale
  * subscription; other plans answer 403 subscription_required).
  *

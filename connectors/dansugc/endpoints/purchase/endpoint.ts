@@ -8,7 +8,9 @@ import { zPurchaseBody } from "./schema/inputs.ts";
  * (or with a stale one) charges nothing and answers 409
  * `{requiresConfirmation, expectedTotalCents}` — error-as-data, zero usage;
  * the caller repeats the call with that value to buy. Clips the account
- * already owns come back under `already_purchased` and are not charged.
+ * already owns come back under `already_purchased` and are not charged —
+ * except on a platform key flagged as a reseller (Monid's), where every
+ * purchase is a fresh, charged license for the end customer.
  *
  * BILLING: metered in DansUGC credits. The rate card is 11 credits per
  * video and 8 per image (dansugc.com/api/pricing/settings
@@ -24,14 +26,15 @@ export default defineEndpoint({
             "download links.",
         description: "License 1–50 clips (ids from dansugc#broll) for " +
             "commercial use in ads and organic posts, and get each clip's " +
-            "full-quality, unwatermarked download_url (signed, valid for " +
-            "about an hour — dansugc#broll/purchases re-issues them). Two " +
+            "full-quality, unwatermarked download_url. The link is signed " +
+            "and valid for about an hour, so download the file right away; " +
+            "each license is per purchase, so a later re-download means " +
+            "licensing the clip again. Two " +
             "steps: call with just `video_ids` to get the exact total — " +
             "that answers 409 with `expected_total_cents` and charges " +
             "nothing — then call again with `expected_total_cents` set to " +
             "that value to buy. A video is 11 DansUGC credits and an image " +
-            "8; clips the account already owns are returned under " +
-            "`already_purchased` at no charge.",
+            "8.",
         docsUrl: "https://dansugc.com/docs#tag/b-roll/POST/broll/purchase",
         categories: ["stock-media"],
         notes: [

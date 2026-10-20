@@ -187,7 +187,6 @@
         "dansugc#broll",
         "dansugc#broll/filters",
         "dansugc#broll/purchase",
-        "dansugc#broll/purchases",
         "dansugc#broll/{videoId}",
         "dataforseo#ai/chatgpt-models",
         "dataforseo#ai/chatgpt-response",
