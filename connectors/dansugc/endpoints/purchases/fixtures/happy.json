@@ -1,0 +1,50 @@
+{
+    "name": "happy",
+    "description": "Recorded 2026-10-20: the account's licensed clips, limit 1. Free. Signature redacted.",
+    "calls": [
+        {
+            "req": {
+                "method": "GET",
+                "url": "https://dansugc.com/api/v1/broll/purchases?limit=1"
+            },
+            "res": {
+                "status": 200,
+                "body": {
+                    "success": true,
+                    "purchases": [
+                        {
+                            "purchase_id": "f151285f-3cd5-446e-85ba-5b98e5f25caf",
+                            "video_id": "1166a85d-b967-4fb0-8ed8-6d2f2d22f23b",
+                            "video_title": "Woman Reacting With Surprise While Online Shopping",
+                            "video_description": "A young woman looks at the camera with wide eyes and a surprised reaction before the view pans down to reveal her sitting on a sofa with a laptop. She scrolls through clothing and portrait photos on an e-commerce website using the trackpad.",
+                            "video_emotion": "surprised",
+                            "video_gender": "female",
+                            "video_location": "Living Room",
+                            "price_paid": 11,
+                            "difficulty_level": 1,
+                            "customer_email": null,
+                            "purchased_at": "2026-10-08T21:27:04.277794+00:00",
+                            "download_url": "https://dansugc.com/api/broll/file?p=broll%2Foriginals%2F1166a85d-b967-4fb0-8ed8-6d2f2d22f23b.mp4&m=video&fn=Woman_Reacting_With_Surprise_While_Online_Shopping.mp4&exp=1792514561&sig=REDACTED",
+                            "thumbnail_url": "https://media.dansugcmodels.com/broll/thumbnails/1166a85d-b967-4fb0-8ed8-6d2f2d22f23b.jpg"
+                        }
+                    ],
+                    "pagination": {
+                        "page": 1,
+                        "limit": 1,
+                        "total": 46,
+                        "total_pages": 46,
+                        "has_more": true
+                    },
+                    "summary": {
+                        "source": "gmail.com",
+                        "period_start": "all time",
+                        "period_end": "present",
+                        "total_purchases": 46,
+                        "total_amount": 313.5,
+                        "page_amount": 11
+                    }
+                }
+            }
+        }
+    ]
+}
