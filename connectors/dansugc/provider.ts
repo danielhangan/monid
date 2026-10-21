@@ -29,8 +29,8 @@ export default defineProvider({
             "location, hair color and outfit, check a clip's details and " +
             "price, then license clips and get their download links. " +
             "Licensing includes commercial use in paid ads and organic " +
-            "posts. Prices are in DansUGC credits: a library video is 11 " +
-            "credits and an image 8.",
+            "posts. Prices are in DansUGC credits: through Monid every clip " +
+            "is a flat 13 credits.",
         homepageUrl: "https://dansugc.com",
         docsUrl: "https://dansugc.com/docs",
         categories: ["stock-media"],

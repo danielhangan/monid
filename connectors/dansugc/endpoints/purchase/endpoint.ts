@@ -12,8 +12,11 @@ import { zPurchaseBody } from "./schema/inputs.ts";
  * except on a platform key flagged as a reseller (Monid's), where every
  * purchase is a fresh, charged license for the end customer.
  *
- * BILLING: metered in DansUGC credits. The rate card is 11 credits per
- * video and 8 per image (dansugc.com/api/pricing/settings
+ * BILLING: metered in DansUGC credits. Monid's platform key is a DansUGC
+ * reseller key: every clip, video or image, is a flat 13 credits and is
+ * charged on every purchase (no plan discount, sale or free tier). An
+ * ordinary DansUGC key lists 11 per video and 8 per image instead
+ * (dansugc.com/api/pricing/settings
  * `broll.videoListCents` / `imageListCents`), lowered by any live sale —
  * so the meter counts CREDITS, not clips: evidence sums each fresh
  * purchase's `price_paid`, and the vendor's own `total_amount` is the
@@ -27,14 +30,15 @@ export default defineEndpoint({
         description: "License 1–50 clips (ids from dansugc#broll) for " +
             "commercial use in ads and organic posts, and get each clip's " +
             "full-quality, unwatermarked download_url. The link is signed " +
-            "and valid for about an hour, so download the file right away; " +
-            "each license is per purchase, so a later re-download means " +
-            "licensing the clip again. Two " +
+            "and valid for about an hour, so download the file right away. " +
+            "Monid's platform key is a DansUGC reseller key: every purchase " +
+            "is a new, charged license, even for a clip bought before (an " +
+            "ordinary DansUGC key gets an owned clip back free). Two " +
             "steps: call with just `video_ids` to get the exact total — " +
             "that answers 409 with `expected_total_cents` and charges " +
             "nothing — then call again with `expected_total_cents` set to " +
-            "that value to buy. A video is 11 DansUGC credits and an image " +
-            "8.",
+            "that value to buy. Each clip, video or image, is 13 DansUGC " +
+            "credits through Monid.",
         docsUrl: "https://dansugc.com/docs#tag/b-roll/POST/broll/purchase",
         categories: ["stock-media"],
         notes: [
@@ -53,14 +57,14 @@ export default defineEndpoint({
             unit: Unit.CREDIT,
             label: "credits charged",
             description: "DansUGC credits charged for freshly licensed " +
-                "clips (11 per video, 8 per image at list; already-owned " +
+                "clips (a flat 13 per clip on the platform key; already-owned " +
                 "clips are free)",
             consumes: { credit: "default", amount: 1 },
         },
-        /** Worst case: every id is a fresh video at the 11-credit list
+        /** Every id is a fresh clip at the platform key's flat 13 credits
          *  price (typed read of the validated input — design D25). */
         estimate: ({ data }) => ({
-            counts: { CREDIT: data.input.body.video_ids.length * 11 },
+            counts: { CREDIT: data.input.body.video_ids.length * 13 },
         }),
         /** Sum of `price_paid` over this call's fresh purchases; owned
          *  clips (`already_purchased`) carry no price. */
