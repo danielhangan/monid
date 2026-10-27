@@ -6,8 +6,8 @@ import { defineProvider, presets } from "@shared/core";
  * clip for ads and organic posts. This port carries the B-roll surface
  * only: search (keyword or natural-language), the filter vocabulary, one
  * clip's details, and licensing clips. Four synchronous endpoints against `https://dansugc.com/api/v1`,
- * auth `Authorization: Bearer dsk_…` (the REST API needs a Scale
- * subscription; other plans answer 403 subscription_required).
+ * auth `Authorization: Bearer dsk_…` (these B-roll routes accept any
+ * DansUGC account's key; licensing spends that account's credits).
  *
  * Billed in DansUGC credits, ONE pool (a top-up buys 1 credit per $1;
  * subscription plans include more credits per dollar). Only
@@ -36,8 +36,8 @@ export default defineProvider({
         docsUrl: "https://dansugc.com/docs",
         categories: ["stock-media"],
         notes: [
-            "The REST API needs a DansUGC Scale subscription on the key's " +
-            "account; other plans answer 403 subscription_required.",
+            "These B-roll routes work with any DansUGC account's key; " +
+            "licensing needs enough credits on that account.",
             "Errors answer `{error}` (a 409 purchase confirmation adds " +
             "`requiresConfirmation` and `expectedTotalCents`). Every " +
             "non-2xx settles with zero usage.",

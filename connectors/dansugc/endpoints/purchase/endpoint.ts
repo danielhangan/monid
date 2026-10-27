@@ -40,13 +40,20 @@ export default defineEndpoint({
             "that answers 409 with `expected_total_cents` and charges " +
             "nothing — then call again with `expected_total_cents` set to " +
             "that value to buy. Each clip, video or image, is 13 DansUGC " +
-            "credits through Monid.",
+            "credits through Monid. To retry safely, set a unique " +
+            "`idempotency_key` per intended purchase and send the same one " +
+            "on every retry: a repeat replays the first successful answer " +
+            "instead of charging again.",
         docsUrl: "https://dansugc.com/docs#tag/b-roll/POST/broll/purchase",
         categories: ["stock-media"],
         notes: [
             "The 409 confirmation step is free and is the way to quote a " +
             "basket before buying; a 402 means the balance cannot cover " +
             "it. Both settle with zero usage.",
+            "A 409 with code idempotency_in_progress means an earlier call " +
+            "with that idempotency_key is still running or was charged " +
+            "without a recorded answer; don't buy again with a new key " +
+            "until the earlier result is known.",
         ],
     },
     request: { method: "POST", path: "/broll/purchase" },
