@@ -28,7 +28,9 @@ export default defineEndpoint({
         summary: "License real-human UGC clips and get full-quality " +
             "download links.",
         description: "License 1–50 clips (ids from dansugc#broll) for " +
-            "commercial use in ads and organic posts, and get each clip's " +
+            "commercial use in ads and organic posts for 12 months " +
+            "(dansugc.com/license; the response carries " +
+            "`license_expires_at`), and get each clip's " +
             "full-quality, unwatermarked download_url. The link is signed " +
             "and valid for about an hour, so download the file right away. " +
             "Monid's platform key is a DansUGC reseller key: every purchase " +

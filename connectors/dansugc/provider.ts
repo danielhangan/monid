@@ -22,14 +22,15 @@ export default defineProvider({
         displayName: "DansUGC",
         summary: "Search and license real-human UGC reaction clips " +
             "(never AI) for ads and organic posts.",
-        description: "DansUGC — a library of 5,000+ real-human UGC " +
+        description: "DansUGC — a library of 6,500+ real-human UGC " +
             "reaction clips (filmed by real creators, never AI) for app, " +
             "consumer and DTC marketing. Search clips by keyword or by " +
             "describing the shot, filter by emotion, gender, age range, " +
             "location, hair color and outfit, check a clip's details and " +
             "price, then license clips and get their download links. " +
-            "Licensing includes commercial use in paid ads and organic " +
-            "posts. Prices are in DansUGC credits: through Monid every clip " +
+            "Each license covers commercial use in paid ads and organic " +
+            "posts for 12 months (dansugc.com/license). Prices are in " +
+            "DansUGC credits: through Monid every clip " +
             "is a flat 13 credits.",
         homepageUrl: "https://dansugc.com",
         docsUrl: "https://dansugc.com/docs",
